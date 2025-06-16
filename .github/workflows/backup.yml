@@ -1,0 +1,30 @@
+name: Backup PostgreSQL to Google Drive
+
+on:
+  push:
+    branches:
+      - main  
+  workflow_dispatch:
+
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2
+
+      - name: Dump PostgreSQL databaseAdd commentMore actions
+        run: |
+          pg_dump -h ${{ secrets.PGHOST }} -U ${{ secrets.PGUSER }} -d ${{ secrets.PGDATABASE }} -f backup.sql
+        env:
+          PGPASSWORD: ${{ secrets.PGPASSWORD }}
+
+      - name: Upload backup to Google Drive
+        uses: willo32/google-drive-upload-action@v1
+        with:
+          target: backup.dump
+          credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
+          parent_folder_id: 1k0M3fyulKmuLAB87mqjNFJZAsFXV8RAA
+          child_folder: backup

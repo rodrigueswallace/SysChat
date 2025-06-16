@@ -26,5 +26,5 @@ jobs:
         with:
           target: backup.dump
           credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
-          parent_folder_id: 1k0M3fyulKmuLAB87mqjNFJZAsFXV8RAA
+          parent_folder_id: ${{ secrets.FOLDER_ID }}
           child_folder: backup

@@ -1,3 +1,5 @@
+
+
 name: Backup PostgreSQL to Google Drive
 
 on:
@@ -7,24 +9,42 @@ on:
   workflow_dispatch:
 
 
+
 jobs:
   backup:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out the code
-        uses: actions/checkout@v2
+      - name: Repository Checkout 
+        uses: actions/checkout@v4
 
-      - name: Dump PostgreSQL databaseAdd commentMore actions
-        run: |
-          pg_dump -h ${{ secrets.PGHOST }} -U ${{ secrets.PGUSER }} -d ${{ secrets.PGDATABASE }} -f backup.sql
+
+      - name: Instalar dependências
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client zip
+
+
+      - name: backup with pg_dump 
         env:
           PGPASSWORD: ${{ secrets.PGPASSWORD }}
+        run: |
+          TIMESTAMP=$(TZ="America/Sao_Paulo" date +%Y%m%d_%H%M%S)
+          BACKUP_NAME="backup_$TIMESTAMP.sql"
+          ZIP_NAME="backup_$TIMESTAMP.zip"
 
-      - name: Upload backup to Google Drive
-        uses: willo32/google-drive-upload-action@v1
+          pg_dump -h ${{ secrets.PGHOST }} \
+                  -p ${{ secrets.PGPORT }} \
+                  -U ${{ secrets.PGUSER }} \
+                  -d ${{ secrets.PGDATABASE }} \
+                  --no-password \
+                  -f $BACKUP_NAME
+
+          zip $ZIP_NAME $BACKUP_NAME
+
+          echo "ZIP_NAME=$ZIP_NAME" >> $GITHUB_ENV
+
+      - name: send to Google Drive
+        uses: adityak74/google-drive-upload-git-action@main
         with:
-          target: backup.dump
           credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
-          parent_folder_id: ${{ secrets.FOLDER_ID }}
-          child_folder: backup
+          filename: ${{ env.ZIP_NAME }}
+          folderId: ${{ secrets.FOLDER_ID }}

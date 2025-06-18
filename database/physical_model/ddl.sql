@@ -8,15 +8,14 @@ CREATE TABLE syschat.user(
     user_photo_url VARCHAR(200),
     user_name VARCHAR(10) NOT NULL,
     user_lastName VARCHAR(20) NOT NULL,
-    user_email VARCHAR(20) NOT NULL,
+    user_email VARCHAR(100) NOT NULL,
     user_password VARCHAR(128) NOT NULL,
-    user_email_canonical VARCHAR(100) NOT NULL,
     user_start_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
 
     CONSTRAINT uq_s_syschat_t_user_c_user_email UNIQUE (user_email),
     CONSTRAINT pk_s_syschat_t_user PRIMARY KEY (user_id),
-    CONSTRAINT ck_user_email_format CHECK (user_email LIKE '%@%.__%')
+    CONSTRAINT ck_user_email_format CHECK (user_email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')
 );
 
 
@@ -80,7 +79,9 @@ CREATE TABLE syschat.email_verification(
     ev_code CHAR(6),
     ev_create_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT pk_s_syschat_t_user_login PRIMARY KEY (ev_id),
+
+    CONSTRAINT uq_s_syschat_t_.email_verification_c_ev_code UNIQUE (ev_code),
+    CONSTRAINT pk_s_syschat_t_email_verificacion PRIMARY KEY (ev_id),
     CONSTRAINT fk_ev_user
      FOREIGN KEY (user_id)
      REFERENCES syschat.user(user_id)

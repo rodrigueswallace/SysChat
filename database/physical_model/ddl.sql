@@ -72,26 +72,6 @@ CREATE TABLE syschat.login_log(
 );
 
 
-CREATE TABLE syschat.email_verification(
-    ev_id INTEGER GENERATED ALWAYS AS IDENTITY,
-
-    user_id INTEGER NOT NULL,
-    ev_code CHAR(6),
-    ev_create_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-
-    CONSTRAINT uq_s_syschat_t_.email_verification_c_ev_code UNIQUE (ev_code),
-    CONSTRAINT pk_s_syschat_t_email_verificacion PRIMARY KEY (ev_id),
-    CONSTRAINT fk_ev_user
-     FOREIGN KEY (user_id)
-     REFERENCES syschat.user(user_id)
-     ON UPDATE RESTRICT
-     ON DELETE RESTRICT
-
-
-);
-
-
 CREATE INDEX idx_user_email ON syschat.user(user_email);
 CREATE INDEX idx_chat_user ON syschat.chat(user_id);
 CREATE INDEX idx_msg_chat ON syschat.msg(chat_id);

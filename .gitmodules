@@ -1,0 +1,3 @@
+[submodule "modulos/SysChat-root"]
+	path = modulos/SysChat-root
+	url = https://github.com/r-lassen/SysChat-root.git

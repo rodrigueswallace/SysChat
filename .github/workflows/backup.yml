@@ -5,7 +5,8 @@ name: Backup PostgreSQL to Google Drive
 on:
   push:
     branches:
-      - main  
+      - main 
+      - dev 
   workflow_dispatch:
 
 

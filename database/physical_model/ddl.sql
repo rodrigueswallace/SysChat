@@ -40,7 +40,7 @@ CREATE TABLE syschat.msg(
     msg_id INTEGER GENERATED ALWAYS AS IDENTITY,
 
     chat_id INTEGER NOT NULL,
-    msg_author VARCHAR(20) NOT NULL,
+    is_user BOOLEAN NOT NULL,
     msg_context TEXT,
     msg_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
 

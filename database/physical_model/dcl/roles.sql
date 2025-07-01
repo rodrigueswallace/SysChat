@@ -1,0 +1,21 @@
+DROP ROLE IF EXISTS anonymous_user;
+DROP ROLE IF EXISTS sys_anonymous_user;
+DROP ROLE IF EXISTS login_user;
+DROP ROLE IF EXISTS sys_user;
+
+
+CREATE ROLE login_user WITH
+  LOGIN
+  NOINHERIT;
+
+CREATE ROLE sys_user WITH
+  NOLOGIN
+  NOINHERIT;
+
+CREATE ROLE anonymous_user WITH
+  NOLOGIN
+  NOINHERIT;
+
+CREATE ROLE sys_anonymous_user WITH
+  NOLOGIN
+  NOINHERIT;

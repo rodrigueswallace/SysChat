@@ -18,19 +18,11 @@ CREATE OR REPLACE FUNCTION
 sysChat.view_insert_function_t_users_r_sys_anonymous_user()
 RETURNS trigger AS $$
 BEGIN
-  IF NEW.user_photo_url IS NOT NULL THEN
-    INSERT INTO sysChat.users (
-      user_photo_url, user_name, user_lastName, user_email, user_password
-    ) VALUES (
-      NEW.user_photo_url, NEW.user_name, NEW.user_lastName, NEW.user_email, NEW.user_password
-    );
-  ELSE
     INSERT INTO sysChat.users (
       user_name, user_lastName, user_email, user_password
     ) VALUES (
       NEW.user_name, NEW.user_lastName, NEW.user_email, NEW.user_password
     );
-  END IF;
   
   RETURN NEW;
 END;

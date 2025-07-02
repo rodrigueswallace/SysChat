@@ -13,7 +13,7 @@ CREATE ROLE sys_user WITH
   NOINHERIT;
 
 CREATE ROLE anonymous_user WITH
-  NOLOGIN
+  LOGIN
   NOINHERIT;
 
 CREATE ROLE sys_anonymous_user WITH

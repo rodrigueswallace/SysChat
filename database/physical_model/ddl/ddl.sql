@@ -5,11 +5,11 @@ CREATE SCHEMA syschat;
 CREATE TABLE syschat.users(
     user_id INTEGER GENERATED ALWAYS AS IDENTITY,
 
-    user_photo_url VARCHAR(200),
-    user_name VARCHAR(10) NOT NULL,
-    user_lastName VARCHAR(20) NOT NULL,
-    user_email VARCHAR(100) NOT NULL,
-    user_password VARCHAR(128) NOT NULL,
+    user_photo_url  VARCHAR(200)                , 
+    user_name       VARCHAR(10 )     NOT NULL   ,
+    user_lastName   VARCHAR(20 )     NOT NULL   ,
+    user_email      VARCHAR(100)     NOT NULL   ,
+    user_password   VARCHAR(128)     NOT NULL   ,
     user_start_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
 
@@ -39,9 +39,9 @@ CREATE TABLE syschat.chat(
 CREATE TABLE syschat.msg(
     msg_id INTEGER GENERATED ALWAYS AS IDENTITY,
 
-    chat_id INTEGER NOT NULL,
-    is_user BOOLEAN NOT NULL,
-    msg_context TEXT,
+    chat_id INTEGER NOT NULL    ,
+    is_user BOOLEAN NOT NULL    ,
+    msg_context     TEXT        ,
     msg_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
 

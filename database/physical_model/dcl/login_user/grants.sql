@@ -27,30 +27,35 @@ GRANT EXECUTE
 
 
 GRANT EXECUTE
-  ON FUNCTION ...(funcion para select)
+  ON FUNCTION syschat.function_select_t_chat_r_sys_user(INTEGER)
   TO login_user;
 
 
+GRANT UPDATE
+  ON syschat.view_update_t_chat_r_sys_user
+  TO login_user;
+
+
+GRANT SELECT 
+	ON syschat.view_update_t_chat_r_sys_user
+	TO login_user;
+
+GRANT EXECUTE
+  ON FUNCTION syschat.view_update_function_t_chat_r_sys_user()
+  TO login_user;
+
+
+
+
+-- MSG TABLE
 GRANT INSERT
-  ON ...(view)
+  ON sysChat.view_insert_msg_r_sys_user
   TO login_user;
 
 GRANT EXECUTE
-  ON FUNCTION ...(funcion da view update )
-  TO login_user;
-
-
-
-
--- CHAT TABLE
-GRANT INSERT
-  ON ...(view)
+  ON FUNCTION sysChat.view_insert_function_t_msg_r_sys_user()
   TO login_user;
 
 GRANT EXECUTE
-  ON FUNCTION ...(funcion da view insert )
-  TO login_user;
-
-GRANT EXECUTE
-  ON FUNCTION ...(funcion para select)
+  ON FUNCTION syschat.function_select_t_msg_r_sys_user(INTEGER)
   TO login_user;

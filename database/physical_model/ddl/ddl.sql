@@ -7,7 +7,7 @@ CREATE TABLE syschat.users(
 
     user_photo_url  VARCHAR(200)                , 
     user_name       VARCHAR(10 )     NOT NULL   ,
-    user_last_name   VARCHAR(20 )     NOT NULL   ,
+    user_last_name  VARCHAR(20 )     NOT NULL   ,
     user_email      VARCHAR(100)     NOT NULL   ,
     user_password   VARCHAR(128)     NOT NULL   ,
     user_start_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,

@@ -1,0 +1,36 @@
+1 accesses_by_user_per_month
+
+2 accesses_all_users_per_month
+
+3 messages_by_user_per_month
+
+4 messages_all_users_per_month
+
+5 top_user_chats_by_message_count
+
+6 top_global_chats_by_message_count
+
+7 wordcloud_user_terms
+
+8 wordcloud_all_terms
+
+9 messages_by_hour_user_today
+
+10 messages_by_hour_all_users_today
+
+11 messages_by_weekday_user
+
+12 messages_by_weekday_all_users
+
+13 avg_message_length_user_per_month
+
+14 avg_message_length_all_users_per_month
+
+15 chats_started_user_per_month
+
+16 chats_started_all_users_per_month
+
+17 avg_chat_duration_user_per_month
+
+18 avg_chat_duration_all_users_per_month
+

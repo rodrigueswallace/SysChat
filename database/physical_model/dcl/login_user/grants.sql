@@ -49,13 +49,13 @@ GRANT EXECUTE
 
 -- MSG TABLE
 GRANT INSERT
-  ON ...(view)
+  ON sysChat.view_insert_msg_r_sys_user
   TO login_user;
 
 GRANT EXECUTE
-  ON FUNCTION ...(funcion da view insert )
+  ON FUNCTION sysChat.view_insert_function_t_msg_r_sys_user()
   TO login_user;
 
 GRANT EXECUTE
-  ON FUNCTION ...(funcion para select)
+  ON FUNCTION syschat.function_select_t_msg_r_sys_user(INTEGER)
   TO login_user;

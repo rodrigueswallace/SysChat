@@ -6,7 +6,7 @@ GRANT CREATE
 
 -- CHAT TABLE(INSERT)
 CREATE OR REPLACE VIEW syschat.view_insert_t_chat_r_sys_user AS
-SELECT chat_name
+SELECT user_id, chat_name
 FROM syschat.chat  
 
 
@@ -18,9 +18,9 @@ syschat.view_insert_function_t_chat_r_sys_user()
 RETURNS trigger AS $$
 BEGIN
     INSERT INTO syschat.chat (
-      chat_name
+      user_id, chat_name
     ) VALUES (
-      NEW.chat_name
+      NEW.user_id, NEW.chat_name
     );
   
   RETURN NEW;

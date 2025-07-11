@@ -34,7 +34,7 @@ BEGIN
     RETURN QUERY
     SELECT
         TO_CHAR(m.msg_date, 'YYYY-MM') AS mes,
-        COUNT(*)::INT AS total_msgs  -- aqui está a correção
+        COUNT(*)::INT AS total_msgs  
     FROM syschat.msg m
     JOIN syschat.chat c ON m.chat_id = c.chat_id
     WHERE

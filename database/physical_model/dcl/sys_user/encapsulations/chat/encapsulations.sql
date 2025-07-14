@@ -18,7 +18,7 @@ syschat.view_insert_function_t_chat_r_sys_user()
 RETURNS trigger AS $$
 BEGIN
     INSERT INTO syschat.chat (
-      user_ud, chat_name
+      user_id, chat_name
     ) VALUES (
       NEW.user_id, NEW.chat_name
     );

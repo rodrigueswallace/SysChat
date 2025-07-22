@@ -5,7 +5,7 @@
 
 
 
-"tb_messages": {
+"syschat_messages": {
     "permission": {
         "tenant_admin_dor, dor-dpo e dor-owner": {
             "insert, select e delete": {
@@ -21,7 +21,7 @@
 
 
 
-"tb_chats": {
+"syschat_chats": {
     "permission": {
         "tenant_admin_dor, dor-dpo e dor-owner": {
             "insert, select, update, update e delete": {
@@ -37,7 +37,7 @@
 
 
 
-"tb_login_logs": {
+"syschat_login_logs": {
     "permission": {
         "tenant_admin_dor, dor-dpo e dor-owner": {
             "insert": {

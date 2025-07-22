@@ -1,4 +1,4 @@
-1 accesses_by_user_per_month
+-- 1 accesses_by_user_per_month
 
 CREATE OR REPLACE VIEW syschat.logins_per_month_last_12_months AS 
 SELECT
@@ -12,7 +12,7 @@ ORDER BY user_id, month;
 
 
 
-2 accesses_all_users_per_month
+-- 2 accesses_all_users_per_month
 
 CREATE OR REPLACE VIEW syschat.users_active_per_month_last_12_months  AS 
 SELECT
@@ -23,7 +23,7 @@ WHERE ll_login_time >= (CURRENT_DATE - INTERVAL '12 months')
 GROUP BY TO_CHAR(ll_login_time, 'YYYY-MM')
 ORDER BY month;
 
-3 messages_by_user_per_month
+-- 3 messages_by_user_per_month
 
 CREATE OR REPLACE FUNCTION syschat.user_msgs_last_12_months(p_user_id INT)
 RETURNS TABLE (
@@ -45,7 +45,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-4 messages_all_users_per_month
+-- 4 messages_all_users_per_month
 
 CREATE OR REPLACE VIEW syschat.user_msgs_last_12_months  AS
 SELECT
@@ -58,7 +58,7 @@ ORDER BY month;
 
 
 
-5 top_user_chats_by_message_count
+-- 5 top_user_chats_by_message_count
 
 CREATE OR REPLACE FUNCTION syschat.top_5_chats_by_user(p_user_id INT)
 RETURNS TABLE (
@@ -85,7 +85,7 @@ $$ LANGUAGE plpgsql;
 
 
 
-6 top_global_chats_by_message_count
+-- 6 top_global_chats_by_message_count
 
 CREATE OR REPLACE VIEW syschat.top_5_chats_by_active_users AS
 SELECT
@@ -99,7 +99,7 @@ ORDER BY total_mensagens DESC
 LIMIT 5;
 
 
-7 wordcloud_user_terms
+-- 7 wordcloud_user_terms
 
 CREATE OR REPLACE FUNCTION syschat.function_word_cloud_by_user(p_user_id UUID)
 RETURNS TABLE(palavra TEXT, total_uso INTEGER)
@@ -119,13 +119,13 @@ AS $$
   LIMIT 10;
 $$;
 
-8 wordcloud_all_terms
+-- 8 wordcloud_all_terms
 
 
 
 
 
-9 messages_by_hour_user_today
+-- 9 messages_by_hour_user_today
 
 CREATE OR REPLACE FUNCTION syschat.function_msgs_by_hour_user(p_user_id UUID)
 RETURNS TABLE(hours INTEGER, total_msgs INTEGER)
@@ -143,7 +143,7 @@ AS $$
   ORDER BY hours;
 $$;
 
-10 messages_by_hour_all_users_today
+-- 10 messages_by_hour_all_users_today
 
 CREATE OR REPLACE VIEW syschat.view_msgs_by_hour_all AS
 SELECT 
@@ -154,7 +154,7 @@ WHERE m.msg_date::DATE = CURRENT_DATE
 GROUP BY hours
 ORDER BY hours;
 
-11 messages_by_weekday_user
+-- 11 messages_by_weekday_user
 
 CREATE OR REPLACE FUNCTION syschat.function_msgs_by_weekday_user(p_user_id UUID)
 RETURNS TABLE(day_week INTEGER, total_msgs INTEGER)
@@ -171,7 +171,7 @@ AS $$
   ORDER BY day_week;
 $$;
 
-12 messages_by_weekday_all_users
+-- 12 messages_by_weekday_all_users
 
 CREATE OR REPLACE VIEW syschat.view_msgs_by_weekday_all AS
 SELECT 
@@ -181,7 +181,7 @@ FROM syschat.msg m
 GROUP BY day_week
 ORDER BY day_week;
 
-13 avg_message_length_user_per_month
+-- 13 avg_message_length_user_per_month
 
 CREATE OR REPLACE FUNCTION syschat.function_avg_msg_size_by_month_user(p_user_id UUID)
 RETURNS TABLE(year_menth TEXT, medium_size NUMERIC)
@@ -198,7 +198,7 @@ AS $$
   ORDER BY year_menth;
 $$;
 
-14 avg_message_length_all_users_per_month
+-- 14 avg_message_length_all_users_per_month
 
 CREATE OR REPLACE VIEW syschat.view_avg_msg_size_by_month_all AS
 SELECT 
@@ -208,7 +208,7 @@ FROM syschat.msg
 GROUP BY year_mount
 ORDER BY year_mount;
 
-15 chats_started_user_per_month
+-- 15 chats_started_user_per_month
 
 CREATE OR REPLACE FUNCTION syschat.function_chats_by_month_user(p_user_id UUID)
 RETURNS TABLE(year_month TEXT, total_chats INTEGER)
@@ -225,7 +225,7 @@ AS $$
   ORDER BY year_month;
 $$;
 
-16 chats_started_all_users_per_month
+-- 16 chats_started_all_users_per_month
 
 CREATE OR REPLACE VIEW syschat.view_chats_by_month_all AS
 SELECT 
@@ -237,7 +237,7 @@ GROUP BY year_month
 ORDER BY year_month;
 
 
-17 avg_chat_duration_user_per_month
+-- 17 avg_chat_duration_user_per_month
 
-18 avg_chat_duration_all_users_per_month
+-- 18 avg_chat_duration_all_users_per_month
 

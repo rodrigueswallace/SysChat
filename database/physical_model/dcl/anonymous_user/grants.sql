@@ -2,7 +2,7 @@ GRANT USAGE
   ON SCHEMA sysChat
   TO anonymous_user;
 
-
+  
 
 
 -- USERS TABLE

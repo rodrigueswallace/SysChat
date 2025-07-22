@@ -6,6 +6,9 @@ Este projeto representa o modelo físico e lógico do banco de dados utilizado n
 
 ## 📁 Estrutura de Pastas
 
+
+```
+
 .github/
 │
 ├── workflows/
@@ -41,7 +44,7 @@ database/
     └── metrics/                        # (Reservado para estatísticas e análises de uso)
 
 
-
+```
 
 
 ---

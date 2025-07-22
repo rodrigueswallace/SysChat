@@ -109,6 +109,19 @@ EXECUTE FUNCTION syschat.view_update_function_t_chat_r_sys_user();
 
 
 
+-- CHAT TABLE(DELETE)
+
+CREATE OR REPLACE PROCEDURE syschat.delete_chat_by_id(p_chat_id INTEGER)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+  DELETE FROM syschat.chats
+  WHERE chat_id = p_chat_id;
+END;
+$$;
+
+
+
 
 REVOKE CREATE ON SCHEMA sysChat FROM sys_user;
 

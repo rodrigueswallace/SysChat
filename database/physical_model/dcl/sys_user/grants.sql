@@ -15,6 +15,10 @@ GRANT UPDATE
   ON syschat.users
   TO sys_user;
 
+GRANT DELETE
+  (user_id)
+  ON syschat.users
+  TO sys_user;
 
 -- CHAT TABLE
 GRANT INSERT
@@ -32,6 +36,10 @@ GRANT UPDATE
   ON syschat.chat
   TO sys_user;
 
+GRANT DELETE
+  (chat_id)
+  ON syschat.chats
+  TO sys_user;
 
 
 -- MSG TABLE
@@ -43,5 +51,30 @@ GRANT INSERT
 GRANT SELECT
   (msg_id, is_user, msg_context, msg_date)
   ON syschat.msg
+  TO sys_user;
+
+
+GRANT DELETE
+  (msg_id)
+  ON syschat.messages
+  TO sys_user;
+
+
+-- LOGIN_LOGS TABLE
+
+GRANT INSERT
+  (user_id)
+  ON syschat.login_logs
+  TO sys_user;
+
+GRANT SELECT
+  (ll_id, ll_login_time, user_id)
+  ON syschat.login_logs
+  TO sys_user;
+
+
+GRANT DELETE
+  (ll_id)
+  ON syschat.login_logs
   TO sys_user;
 

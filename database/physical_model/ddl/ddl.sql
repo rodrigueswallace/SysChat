@@ -6,25 +6,25 @@ CREATE SCHEMA syschat;
 
 
 CREATE TABLE syschat.users(
-    user_id INTEGER GENERATED ALWAYS AS IDENTITY,
+    user_id         UUID,
 
     user_photo_url  VARCHAR(200)                , 
     user_name       VARCHAR(40 )     NOT NULL   ,
     user_last_name  VARCHAR(40 )     NOT NULL   ,
     user_email      VARCHAR(30)      NOT NULL   ,
     user_password   VARCHAR(128)     NOT NULL   ,
-    user_start_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at      TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
 );
 
 
 
-CREATE TABLE syschat.chat(
+CREATE TABLE syschat.chats(
     chat_id INTEGER GENERATED ALWAYS AS IDENTITY,
 
-    chat_name VARCHAR(20) NOT NULL DEFAULT 'Novo Chat',
-    chat_start_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    chat_name   VARCHAR(20) NOT NULL DEFAULT 'Novo Chat',
+    created_at  TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	
-	user_id UUID NOT NULL,
+	user_id     UUID NOT NULL,
 
     CONSTRAINT pk_s_syschat_t_chat PRIMARY KEY (chat_id),
 	
@@ -35,13 +35,13 @@ CREATE TABLE syschat.chat(
      ON DELETE RESTRICT
 );
 
-CREATE TABLE syschat.msg(
+CREATE TABLE syschat.messages(
     msg_id INTEGER GENERATED ALWAYS AS IDENTITY,
 
     chat_id INTEGER NOT NULL    ,
     is_user BOOLEAN NOT NULL    ,
     msg_context     VARCHAR(300),        ,
-    msg_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
 
     CONSTRAINT pk_s_syschat_t_msg PRIMARY KEY (msg_id),

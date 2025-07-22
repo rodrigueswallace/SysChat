@@ -1,0 +1,50 @@
+
+
+
+
+
+
+
+"tb_messages": {
+    "permission": {
+        "tenant_admin_dor, dor-dpo e dor-owner": {
+            "insert, select e delete": {
+                "user_id": {
+                    "_eq": "X-Hasura-User-Id"
+                }
+            }
+        }
+    }
+},
+
+
+
+
+
+"tb_chats": {
+    "permission": {
+        "tenant_admin_dor, dor-dpo e dor-owner": {
+            "insert, select, update, update e delete": {
+                "user_id": {
+                    "_eq": "X-Hasura-User-Id"
+                }
+            }
+        }
+    }
+},
+
+
+
+
+
+"tb_login_logs": {
+    "permission": {
+        "tenant_admin_dor, dor-dpo e dor-owner": {
+            "insert": {
+                "user_id": {
+                    "_eq": "X-Hasura-User-Id"
+                }
+            }
+        }
+    }
+},

@@ -1,10 +1,10 @@
-# 🗨️ SysChat - Estrutura do Banco de Dados
+# SysChat - Database Structure
 
-Este projeto representa o modelo físico e lógico do banco de dados utilizado no sistema **SysChat**, contendo dicionário de dados, scripts DDL/DCL, constraints e modelos relacionais.
+This project represents the physical and logical model of the database used in the SysChat system, including a data dictionary, DDL/DCL scripts, constraints, and relational models.
 
 ---
 
-## 📁 Estrutura de Pastas
+## 📁 Folder Structure
 
 
 ```
@@ -12,20 +12,20 @@ Este projeto representa o modelo físico e lógico do banco de dados utilizado n
 .github/
 │
 ├── workflows/
-│   └── backup.yml               # Responsável por fazer o backup do banco toda vez que for feito merge na main
+│   └── backup.yml               #  Responsible for backing up the database on every merge to main
 
 database/
 │
-├── data_dictionary/             # Dicionário de dados (.xlsx)
-├── instance_table/img/          # Imagens das instâncias das tabelas (ex: users.png)
-├── logical_model/img/           # Modelo lógico em imagem
-├── permissions_table/           # Dicionário com permissões de acesso
+├── data_dictionary/             #  Data dictionary (.xlsx)
+├── instance_table/img/          # Table instance images (e.g., users.png)
+├── logical_model/img/           # Logical model in image format
+├── permissions_table/           #  Dictionary of access permissions
 └── physical_model/
-    ├── dcl/                     # Scripts de controle de acesso
+    ├── dcl/                     # Access control scripts
     │   ├── anonymous_user/
-    │   │   └── grants.sql              # Permissões do usuário anônimo
+    │   │   └── grants.sql              # Anonymous user permissions
     │   ├── login_user/
-    │   │   └── grants.sql              # Permissões do usuário logado
+    │   │   └── grants.sql              #  Logged-in user permissions
     │   ├── sys.anonymous_user/
     │   │   └── encapsulations.sql
     │   ├── sys_user/
@@ -34,14 +34,15 @@ database/
     │   │   │   ├── login_log/encapsulations.sql
     │   │   │   ├── msg/encapsulations.sql
     │   │   │   └── users/encapsulations.sql
-    │   │   └── grants.sql              # Permissões do usuário do sistema
-    │   └── roles.sql                   # Definição de roles no banco
+    │   │   └── grants.sql              # System user permissions
+    │   └── roles.sql                   # Role definitions in the database
     │
     ├── ddl/
-    │   ├── check_constraints.sql       # Constraints CHECK separadas por tabela
-    │   └── ddl.sql                     # Criação do schema e tabelas principais
+    │   ├── check_constraints.sql       # Separated CHECK constraints by table
+    │   └── ddl.sql                     # Schema and main table creation
     │
-    └── metrics/                        # (Reservado para estatísticas e análises de uso)
+    ├── row-permissions/                # Row-level security permission rules
+    └── metrics/                        # (Reserved for usage statistics and analysis)
 
 
 ```
@@ -49,62 +50,60 @@ database/
 
 ---
 
-## 🧱 Componentes do Banco
+## 🧱 Database Components
 
-### 🔹 Schema principal: `syschat`
+### 🔹 Main schema: `syschat`
 
-Contém as seguintes tabelas:
+Includes the following tables:
 
-- `users` - Informações de usuários (nome, email, senha, etc.)
-- `chats` - Tabela de chats criados por usuários
-- `messages` - Armazena mensagens em cada chat
-- `login_logs` - Registra logins de usuários
+- `users` - User information (name, email, password, etc.)
+- `chats` - Chat records created by users
+- `messages` - Stores messages within each chat
+- `login_logs` - Logs user login activity
 
 ---
 
-## ⚙️ Scripts Importantes
+## ⚙️ Important Scripts
 
 ### 🔸 `ddl.sql`
-Criação do schema `syschat` e das tabelas principais.
+Creates the `syschat` schema and main tables.
 
 ### 🔸 `check_constraints.sql`
-Contém os `CHECK CONSTRAINTS` separados para manter integridade dos dados (ex: nome não vazio, senha com mínimo de caracteres, etc.).
+Contains separated `CHECK CONSTRAINTS` to maintain data integrity (e.g., non-empty name, password with minimum characters, etc.).
 
 ### 🔸 `encapsulations.sql`
-Encapsulamentos lógicos para manipulação dos dados (CRUD controlado por usuário/role).
+Logical encapsulations for data manipulation (CRUD controlled by user/role).
 
 ### 🔸 `grants.sql`
-Controla permissões por tipo de usuário:
-- `anonymous_user` → acesso mínimo
-- `login_user` → acesso restrito a dados próprios
-- `sys_user` → acesso completo via procedures
+Controls permissions by user type:
+- `anonymous_user` → minimal access
+- `login_user` → restricted access to own data
 
 ---
 
-## 🔒 Segurança
+## 🔒 Security
 
-A estrutura usa separação por *roles* no banco de dados e encapsulamento por procedimentos (`encapsulations.sql`) para garantir:
-- Restrições de leitura/escrita
-- Visões seguras
-- Governança de acesso
-
----
-
-## 📸 Modelos
-
-- Os arquivos em `instance_table/img/` e `logical_model/img/` fornecem diagramas visuais de instâncias e relações das tabelas.
+The structure uses role-based separation in the database and encapsulation via procedures (`encapsulations.sql`) to ensure:
+- Read/write restrictions
+- Secure views
+- Access governance
 
 ---
 
-## 📋 Requisitos
+## 📸 Models
 
-- PostgreSQL 14 ou superior
-
----
-
-## 👨‍💻 Autor
-
-Wallace Alves Rodrigues 
+- Files under `instance_table/img/` and `logical_model/img/` provide visual diagrams of table instances and relationships.
 
 ---
 
+## 📋 Requirements
+
+- PostgreSQL 14 or higher
+
+---
+
+## 👨‍💻 Author
+
+Wallace Alves Rodrigues
+
+---

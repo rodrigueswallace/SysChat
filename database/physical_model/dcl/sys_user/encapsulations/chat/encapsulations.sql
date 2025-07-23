@@ -5,6 +5,7 @@ GRANT CREATE
 
 
 -- CHAT TABLE(INSERT)
+
 CREATE OR REPLACE VIEW syschat.view_insert_t_chat_r_sys_user AS
 SELECT user_id, chat_name
 FROM syschat.chat  

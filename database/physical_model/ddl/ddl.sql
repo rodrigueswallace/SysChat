@@ -8,7 +8,7 @@ CREATE SCHEMA syschat;
 CREATE TABLE syschat.users(
     user_id         UUID,
 
-    user_photo_url  VARCHAR(200)                , 
+    user_photo_url  VARCHAR(300)                , 
     user_name       VARCHAR(40 )     NOT NULL   ,
     user_last_name  VARCHAR(40 )     NOT NULL   ,
     user_email      VARCHAR(30)      NOT NULL   ,
@@ -54,7 +54,7 @@ CREATE TABLE syschat.messages(
 
 
 
-CREATE TABLE syschat.login_log(
+CREATE TABLE syschat.login_logs(
     ll_id UUID,
 
     ll_login_time TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,

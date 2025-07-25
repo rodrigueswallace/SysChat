@@ -1,0 +1,89 @@
+
+
+{
+  "syschat_messages": {
+    "permission": {
+      "user": {
+        "insert": {
+          "user_id": {
+            "_eq": "X-Hasura-User-Id"
+          }
+        },
+        "select": {
+          "user_id": {
+            "_eq": "X-Hasura-User-Id"
+          }
+        },
+        "delete": {
+          "user_id": {
+            "_eq": "X-Hasura-User-Id"
+          }
+        }
+      }
+    }
+  },
+
+
+  "syschat_chats": {
+    "permission": {
+      "user": {
+        "insert": {
+          "user_id": {
+            "_eq": "X-Hasura-User-Id"
+          }
+        },
+        "select": {
+          "user_id": {
+            "_eq": "X-Hasura-User-Id"
+          }
+        },
+        "update": {
+          "user_id": {
+            "_eq": "X-Hasura-User-Id"
+          }
+        },
+        "delete": {
+          "user_id": {
+            "_eq": "X-Hasura-User-Id"
+          }
+        }
+      }
+    }
+  },
+
+
+  "syschat_login_logs": {
+    "permission": {
+      "user": {
+        "insert": {
+          "user_id": {
+            "_eq": "X-Hasura-User-Id"
+          }
+        }
+      }
+    }
+  },
+
+
+  "auth.users": {
+    "permission": {
+      "anonymous_user": {
+        "select": {
+          "user_id": {
+            "_eq": "X-Hasura-User-Id"
+          }
+        },
+        "update": {
+          "user_id": {
+            "_eq": "X-Hasura-User-Id"
+          }
+        },
+        "delete": {
+          "user_id": {
+            "_eq": "X-Hasura-User-Id"
+          }
+        }
+      }
+    }
+  }
+}

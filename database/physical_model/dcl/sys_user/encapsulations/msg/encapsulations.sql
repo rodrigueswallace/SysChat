@@ -71,6 +71,17 @@ RESET ROLE;
 
 
 
+-- MSG TABLE(DELETE)
+
+CREATE OR REPLACE PROCEDURE syschat.delete_msg_by_id(p_msg_id INTEGER)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+  DELETE FROM syschat.messages
+  WHERE msg_id = p_msg_id;
+END;
+$$;
+
 
 
 

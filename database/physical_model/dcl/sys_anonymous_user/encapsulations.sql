@@ -5,7 +5,7 @@ GRANT CREATE
 
 
 -- USERS TABLE(INSERT)
--- Create a view to allow INSERT operations without exposing the real table
+-- Create a view t o allow INSERT operations without exposing the real table
 CREATE OR REPLACE VIEW sysChat.view_insert_user_r_sys_anonymous_user AS
 SELECT user_name, user_last_name, user_email, user_password
 FROM sysChat.users

@@ -63,6 +63,18 @@ SET search_path = syschat, pg_temp;
 RESET ROLE;
 
 
+-- USERS TABLE(DELETE)
+
+CREATE OR REPLACE PROCEDURE syschat.delete_user_by_id(p_user_id UUID)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+  DELETE FROM syschat.users
+  WHERE user_id = p_user_id;
+END;
+$$;
+
+
 
 
 REVOKE CREATE ON SCHEMA syschat FROM sys_user;

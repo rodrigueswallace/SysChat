@@ -5,6 +5,7 @@ GRANT CREATE
 
 
 -- CHAT TABLE(INSERT)
+
 CREATE OR REPLACE VIEW syschat.view_insert_t_chat_r_sys_user AS
 SELECT user_id, chat_name
 FROM syschat.chat  
@@ -106,6 +107,19 @@ CREATE OR REPLACE TRIGGER view_update_trigger_chat_r_sys_user
 INSTEAD OF INSERT ON syschat.view_update_t_chat_r_sys_user
 FOR EACH ROW
 EXECUTE FUNCTION syschat.view_update_function_t_chat_r_sys_user();
+
+
+
+-- CHAT TABLE(DELETE)
+
+CREATE OR REPLACE PROCEDURE syschat.delete_chat_by_id(p_chat_id INTEGER)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+  DELETE FROM syschat.chats
+  WHERE chat_id = p_chat_id;
+END;
+$$;
 
 
 
